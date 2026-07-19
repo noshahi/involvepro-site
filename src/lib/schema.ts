@@ -69,6 +69,38 @@ export function creativeWorkSchema(params: {
   };
 }
 
+export function webPageSchema(params: {
+  name: string;
+  description: string;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: params.name,
+    description: params.description,
+    url: `${SITE_URL}${params.path}`,
+  };
+}
+
+export function howToSchema(params: {
+  name: string;
+  description: string;
+  steps: { title: string; description: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: params.name,
+    description: params.description,
+    step: params.steps.map((step) => ({
+      "@type": "HowToStep",
+      name: step.title,
+      text: step.description,
+    })),
+  };
+}
+
 export function jsonLdProps(data: object) {
   return {
     __html: JSON.stringify(data),

@@ -18,7 +18,7 @@ export const navServiceGroups = navServiceGroupDefs.map((group) => ({
 export const navLinks = [
   { label: "Services", href: "/services", hasMegaMenu: true },
   { label: "Work", href: "/work" },
-  { label: "Process", href: "/#process" },
+  { label: "Process", href: "/process" },
   { label: "Insights", href: "/#insights" },
   { label: "Contact", href: "/#contact" },
 ];
