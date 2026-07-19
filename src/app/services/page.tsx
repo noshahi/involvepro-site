@@ -7,7 +7,7 @@ import { ServiceCategoryBand } from "@/components/sections/ServiceCategoryBand";
 import { ProcessTimeline } from "@/components/sections/ProcessTimeline";
 import { SectionEyebrow } from "@/components/ui/GlassCard";
 import { RevealOnScroll, RevealItem } from "@/components/ui/RevealOnScroll";
-import { MagneticButton } from "@/components/ui/MagneticButton";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 import { serviceGroups, getServicesByGroup, getServiceBySlug } from "@/data/services";
 import { collectionPageSchema, breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
@@ -16,8 +16,6 @@ export const metadata: Metadata = {
   description:
     "Explore involvepro services for Shopify development, WordPress, SaaS products, AI automation, SEO, AEO, CRO, analytics, and website support.",
 };
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
 
 const howWeHelp = [
   { question: "Need a better store?", answer: "Shopify Development / Shopify Store Design", slugs: ["shopify-development", "shopify-store-design"] },
@@ -117,9 +115,7 @@ export default function ServicesPage() {
               and technical path.
             </p>
             <div className="mt-9 flex justify-center">
-              <MagneticButton href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" variant="solid">
-                Schedule a Meeting <ArrowRight className="h-4 w-4" />
-              </MagneticButton>
+              <ScheduleMeetingButton variant="solid" />
             </div>
           </div>
         </section>

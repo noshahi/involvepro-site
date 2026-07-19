@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, NotebookPen, Map, Palette, Code2, Search, Rocket } from "lucide-react";
+import { NotebookPen, Map, Palette, Code2, Search, Rocket } from "lucide-react";
 import { Pill } from "@/components/ui/Pill";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 
 const panels = [
   { icon: NotebookPen, label: "Discovery notes", meta: "Goals · Audience · Constraints", offset: "lg:translate-y-2" },
@@ -50,9 +49,7 @@ export function ProcessHero() {
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             className="mt-9 flex flex-wrap gap-3.5"
           >
-            <MagneticButton href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" variant="solid">
-              Schedule a Meeting <ArrowRight className="h-4 w-4" />
-            </MagneticButton>
+            <ScheduleMeetingButton variant="solid" />
             <MagneticButton href="/services" variant="outline">
               Explore Services
             </MagneticButton>

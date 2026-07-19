@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BadgeCheck, ArrowRight, TrendingUp, Sparkles, LayoutDashboard, Gauge } from "lucide-react";
+import { BadgeCheck, TrendingUp, Sparkles, LayoutDashboard, Gauge } from "lucide-react";
 import { Pill } from "@/components/ui/Pill";
 import { BrowserFrame } from "@/components/ui/BrowserFrame";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 import { heroProofItems } from "@/lib/data/stats";
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
 
 const codeLines = [
   { text: 'section "product-grid" {', color: "text-white/70" },
@@ -59,9 +58,7 @@ export function SplitHero() {
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             className="mt-9 flex flex-wrap gap-3.5"
           >
-            <MagneticButton href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" variant="solid">
-              Schedule a Meeting <ArrowRight className="h-4 w-4" />
-            </MagneticButton>
+            <ScheduleMeetingButton variant="solid" />
             <MagneticButton href="#services" variant="outline">
               Explore Services
             </MagneticButton>

@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Pill } from "@/components/ui/Pill";
 import { BrowserFrame } from "@/components/ui/BrowserFrame";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 import type { Project } from "@/data/projects";
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
 
 export function ProjectDetailHero({ project }: { project: Project }) {
   return (
@@ -64,9 +63,7 @@ export function ProjectDetailHero({ project }: { project: Project }) {
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             className="mt-9 flex flex-wrap gap-3.5"
           >
-            <MagneticButton href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" variant="solid">
-              Schedule a Meeting <ArrowRight className="h-4 w-4" />
-            </MagneticButton>
+            <ScheduleMeetingButton variant="solid" />
             {project.websiteUrl && (
               <MagneticButton href={project.websiteUrl} target="_blank" rel="noopener noreferrer" variant="outline">
                 Visit Website <ExternalLink className="h-3.5 w-3.5" />

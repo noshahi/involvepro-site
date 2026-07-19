@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { MapPin, Mail, Phone } from "lucide-react";
 import { navLinks } from "@/lib/data/nav";
 import { primaryServices, secondaryServices } from "@/data/services";
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 
 const socialLinks = [
   { label: "Shopify Partner profile", href: "https://www.shopify.com/partners/directory/partner/involvepro-agency", mark: "Sp" },
@@ -32,7 +32,9 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1280px] grid-cols-2 gap-x-8 gap-y-12 border-b border-white/10 pb-12 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
         <div className="col-span-2 lg:col-span-1">
           <div className="mb-4 flex items-center gap-3">
-            <Image src="/brand/logo-black.svg" alt="Involvepro" width={120} height={46} className="h-6 w-auto brightness-0 invert" />
+            <Link href="/" aria-label="Involvepro home">
+              <Image src="/brand/logo-black.svg" alt="Involvepro" width={120} height={46} className="h-6 w-auto brightness-0 invert" />
+            </Link>
           </div>
           <p className="mb-6 max-w-[280px] text-[13.5px] leading-relaxed text-white/50">
             Shopify Select Partner and WordPress development agency building custom-coded ecommerce
@@ -62,9 +64,9 @@ export function Footer() {
           <ul className="flex flex-col gap-3">
             {footerServiceLinks.map(({ label, href }) => (
               <li key={label}>
-                <a href={href} className="text-[13.5px] leading-snug text-white/65 hover:text-white">
+                <Link href={href} className="text-[13.5px] leading-snug text-white/65 hover:text-white">
                   {label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -77,9 +79,9 @@ export function Footer() {
           <ul className="flex flex-col gap-3">
             {resourceLinks.map((item) => (
               <li key={item.label}>
-                <a href={item.href} className="text-[13.5px] text-white/65 hover:text-white">
+                <Link href={item.href} className="text-[13.5px] text-white/65 hover:text-white">
                   {item.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -103,14 +105,7 @@ export function Footer() {
               <span>Jhelum, Pakistan — serving USA clients</span>
             </li>
           </ul>
-          <a
-            href={CALENDLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-brand-green px-5 py-2.5 text-[13.5px] font-semibold text-white transition-colors hover:bg-brand-green-deep"
-          >
-            Schedule a Meeting <ArrowRight className="h-3.5 w-3.5" />
-          </a>
+          <ScheduleMeetingButton variant="solid" className="mt-5 px-5 py-2.5 text-[13.5px]" />
         </div>
       </div>
 
@@ -120,9 +115,9 @@ export function Footer() {
         </p>
         <div className="flex items-center gap-4">
           {navLinks.map((item) => (
-            <a key={item.label} href={item.href} className="text-[12px] text-white/35 hover:text-white/60">
+            <Link key={item.label} href={item.href} className="text-[12px] text-white/35 hover:text-white/60">
               {item.label}
-            </a>
+            </Link>
           ))}
         </div>
       </div>

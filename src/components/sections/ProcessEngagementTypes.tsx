@@ -1,9 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import { Rocket, TrendingUp, ShieldCheck, Workflow, ArrowRight } from "lucide-react";
 import { SectionEyebrow } from "@/components/ui/GlassCard";
 import { RevealOnScroll, RevealItem } from "@/components/ui/RevealOnScroll";
+import { CalendlyModal } from "@/components/ui/CalendlyModal";
 import { engagementTypes } from "@/data/process";
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
 
 const icons: Record<string, React.ComponentType<{ className?: string }>> = {
   "project-build": Rocket,
@@ -20,6 +22,8 @@ const accents = [
 ];
 
 export function ProcessEngagementTypes() {
+  const [calendlyOpen, setCalendlyOpen] = useState(false);
+
   return (
     <section aria-label="Engagement types" className="bg-white px-6 py-24 sm:py-28">
       <div className="mx-auto max-w-[1280px]">
@@ -50,20 +54,21 @@ export function ProcessEngagementTypes() {
                     </p>
                     <p className="mt-1 text-[13px] leading-relaxed text-text-muted">{type.typicalFocus}</p>
                   </div>
-                  <a
-                    href={CALENDLY_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <button
+                    type="button"
+                    onClick={() => setCalendlyOpen(true)}
                     className="mt-6 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-brand-green"
                   >
                     {type.ctaLabel} <ArrowRight className="h-3 w-3" />
-                  </a>
+                  </button>
                 </div>
               </RevealItem>
             );
           })}
         </RevealOnScroll>
       </div>
+
+      <CalendlyModal isOpen={calendlyOpen} onClose={() => setCalendlyOpen(false)} />
     </section>
   );
 }

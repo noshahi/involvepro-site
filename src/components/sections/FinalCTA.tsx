@@ -1,5 +1,4 @@
-import { ArrowRight } from "lucide-react";
-import { MagneticButton } from "@/components/ui/MagneticButton";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 
 export function FinalCTA() {
   return (
@@ -20,14 +19,7 @@ export function FinalCTA() {
           that&apos;s us or not.
         </p>
         <div className="mt-9 flex justify-center">
-          <MagneticButton
-            href="https://calendly.com/involvepro/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="solid"
-          >
-            Schedule a Meeting <ArrowRight className="h-4 w-4" />
-          </MagneticButton>
+          <ScheduleMeetingButton variant="solid" />
         </div>
         <p className="mt-4 text-[12.5px] text-white/40">Free 30-minute call · No obligation</p>
       </div>

@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ShoppingBag, TrendingUp, Search, Bot, CheckCircle2 } from "lucide-react";
+import { ShoppingBag, TrendingUp, Search, Bot, CheckCircle2 } from "lucide-react";
 import { Pill } from "@/components/ui/Pill";
 import { BrowserFrame } from "@/components/ui/BrowserFrame";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 import type { Service } from "@/data/services";
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
 
 function HeroVisual({ service }: { service: Service }) {
   switch (service.heroVisualType) {
@@ -108,10 +107,8 @@ export function ServiceDetailHero({ service }: { service: Service }) {
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             className="mt-9 flex flex-wrap gap-3.5"
           >
-            <MagneticButton href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" variant="solid">
-              {service.primaryCTA} <ArrowRight className="h-4 w-4" />
-            </MagneticButton>
-            <MagneticButton href={service.secondaryCTA === "View Process" ? "#process" : "#related"} variant="outline">
+            <ScheduleMeetingButton variant="solid" label={service.primaryCTA} />
+            <MagneticButton href={service.secondaryCTA === "View Process" ? "/process" : "#related"} variant="outline">
               {service.secondaryCTA}
             </MagneticButton>
           </motion.div>

@@ -1,12 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ShoppingBag, Search, Bot } from "lucide-react";
+import { ShoppingBag, Search, Bot } from "lucide-react";
 import { Pill } from "@/components/ui/Pill";
 import { BrowserFrame } from "@/components/ui/BrowserFrame";
 import { MagneticButton } from "@/components/ui/MagneticButton";
-
-const CALENDLY_URL = "https://calendly.com/involvepro/30min";
+import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 
 const floatingCards = [
   {
@@ -70,9 +69,7 @@ export function WorkHero() {
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             className="mt-9 flex flex-wrap gap-3.5"
           >
-            <MagneticButton href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" variant="solid">
-              Schedule a Meeting <ArrowRight className="h-4 w-4" />
-            </MagneticButton>
+            <ScheduleMeetingButton variant="solid" />
             <MagneticButton href="#featured-work" variant="outline">
               View Selected Work
             </MagneticButton>
