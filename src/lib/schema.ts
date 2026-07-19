@@ -48,6 +48,27 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   };
 }
 
+export function creativeWorkSchema(params: {
+  name: string;
+  description: string;
+  slug: string;
+  clientName: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: params.name,
+    description: params.description,
+    url: `${SITE_URL}/work/${params.slug}`,
+    creator: {
+      "@type": "Organization",
+      name: "Involvepro",
+      url: SITE_URL,
+    },
+    about: params.clientName,
+  };
+}
+
 export function jsonLdProps(data: object) {
   return {
     __html: JSON.stringify(data),

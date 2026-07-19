@@ -19,7 +19,7 @@ const footerServiceLinks = [...primaryServices, ...secondaryServices.slice(0, 2)
 }));
 
 const resourceLinks = [
-  { label: "Featured Work", href: "/#work" },
+  { label: "Featured Work", href: "/work" },
   { label: "Our Process", href: "/#process" },
   { label: "Insights", href: "/#insights" },
   { label: "All Services", href: "/services" },

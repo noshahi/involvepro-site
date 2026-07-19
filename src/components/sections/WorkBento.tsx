@@ -21,7 +21,7 @@ export function WorkBento() {
               Work across ecommerce, B2B, SaaS, and high-visibility brands.
             </h2>
           </div>
-          <a href="#work" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
+          <a href="/work" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
             View all projects →
           </a>
         </div>
