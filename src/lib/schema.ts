@@ -101,6 +101,72 @@ export function howToSchema(params: {
   };
 }
 
+export function blogSchema(params: { name: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: params.name,
+    description: params.description,
+    url: `${SITE_URL}${params.path}`,
+    publisher: {
+      "@type": "Organization",
+      name: "Involvepro",
+      url: SITE_URL,
+    },
+  };
+}
+
+export function blogPostingSchema(params: {
+  title: string;
+  description: string;
+  slug: string;
+  authorName: string;
+  publishedDate: string;
+  updatedDate: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: params.title,
+    description: params.description,
+    url: `${SITE_URL}/insights/${params.slug}`,
+    datePublished: params.publishedDate,
+    dateModified: params.updatedDate,
+    author: {
+      "@type": "Organization",
+      name: params.authorName,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Involvepro",
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/brand/logo-black.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/insights/${params.slug}`,
+    },
+  };
+}
+
+export function faqPageSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
 export function jsonLdProps(data: object) {
   return {
     __html: JSON.stringify(data),
