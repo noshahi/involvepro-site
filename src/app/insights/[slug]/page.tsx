@@ -15,6 +15,7 @@ import { ArticleRelatedServices } from "@/components/sections/ArticleRelatedServ
 import { ArticleRelatedPosts } from "@/components/sections/ArticleRelatedPosts";
 import { ArticleCTA } from "@/components/sections/ArticleCTA";
 import { getPostBySlug, getRelatedPosts, getAllPostSlugs } from "@/data/posts";
+import { getPublishedDbPostBySlug } from "@/lib/insights-db";
 import { blogPostingSchema, faqPageSchema, breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
 export function generateStaticParams() {
@@ -23,7 +24,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug) ?? (await getPublishedDbPostBySlug(slug));
   if (!post) return {};
   return {
     title: post.metaTitle,
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function InsightArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = getPostBySlug(slug);
+  const post = getPostBySlug(slug) ?? (await getPublishedDbPostBySlug(slug));
   if (!post) notFound();
 
   const related = getRelatedPosts(post);
@@ -90,4 +91,7 @@ export default async function InsightArticlePage({ params }: { params: Promise<{
   );
 }
 
-export const dynamicParams = false;
+// DB-backed posts are not known at build time, so dynamic params stay enabled
+// and fall through to `getPublishedDbPostBySlug` above for slugs outside the
+// static seed set.
+export const dynamicParams = true;

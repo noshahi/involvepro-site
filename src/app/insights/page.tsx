@@ -7,6 +7,7 @@ import { InsightsGrid } from "@/components/sections/InsightsGrid";
 import { InsightNewsletterCTA } from "@/components/sections/InsightNewsletterCTA";
 import { WorkCTA } from "@/components/sections/WorkCTA";
 import { posts, getFeaturedPost } from "@/data/posts";
+import { getPublishedDbPosts } from "@/lib/insights-db";
 import { blogSchema, collectionPageSchema, breadcrumbSchema, jsonLdProps } from "@/lib/schema";
 
 export const metadata: Metadata = {
@@ -15,7 +16,10 @@ export const metadata: Metadata = {
     "Practical guides for Shopify, WordPress, SEO, AEO, SaaS, AI automation, full-stack development, ecommerce growth, and website maintenance.",
 };
 
-export default function InsightsPage() {
+export default async function InsightsPage() {
+  const dbPosts = await getPublishedDbPosts();
+  const existingSlugs = new Set(posts.map((p) => p.slug));
+  const allPosts = [...posts, ...dbPosts.filter((p) => !existingSlugs.has(p.slug))];
   const featured = getFeaturedPost();
 
   const blog = blogSchema({
@@ -44,7 +48,7 @@ export default function InsightsPage() {
       <main id="main-content" className="flex-1">
         <InsightsHero />
         {featured && <FeaturedInsight post={featured} />}
-        <InsightsGrid posts={posts} />
+        <InsightsGrid posts={allPosts} />
         <InsightNewsletterCTA />
         <WorkCTA
           headline="Need help applying this to your website?"

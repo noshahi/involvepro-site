@@ -1,0 +1,187 @@
+// Prisma schema for involvepro Admin/CMS (Phase 7A)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+  SEO_MANAGER
+}
+
+enum PostStatus {
+  draft
+  in_review
+  scheduled
+  published
+  archived
+}
+
+enum SubmissionStatus {
+  new
+  reviewed
+  replied
+  archived
+}
+
+enum RedirectType {
+  R301
+  R302
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(ADMIN)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model BlogPost {
+  id                   String     @id @default(cuid())
+  title                String
+  slug                 String     @unique
+  category             String
+  tags                 String[]   @default([])
+  excerpt              String
+  directAnswer         String
+  keyTakeaways         String[]   @default([])
+  contentJson          Json?
+  checklist            String[]   @default([])
+  faqs                 Json?
+  authorName           String
+  authorRole           String
+  authorBio            String
+  reviewerName         String?
+  reviewerRole         String?
+  publishedDate        DateTime?
+  updatedDate          DateTime?
+  readingTime          String?
+  featured             Boolean    @default(false)
+  relatedServices      String[]   @default([])
+  relatedServiceSlugs  String[]   @default([])
+  relatedPosts         String[]   @default([])
+  metaTitle            String?
+  metaDescription      String?
+  schemaDescription     String?
+  status               PostStatus @default(draft)
+  noindex              Boolean    @default(false)
+  canonicalUrl         String?
+  ogTitle              String?
+  ogDescription        String?
+  ogImage              String?
+  createdAt            DateTime   @default(now())
+  updatedAt            DateTime   @updatedAt
+
+  @@index([status])
+  @@index([category])
+}
+
+model PageSEO {
+  id                  String   @id @default(cuid())
+  path                String   @unique
+  pageName             String
+  metaTitle           String?
+  metaDescription      String?
+  canonicalUrl         String?
+  ogTitle              String?
+  ogDescription        String?
+  ogImage              String?
+  twitterTitle         String?
+  twitterDescription   String?
+  twitterImage         String?
+  noindex              Boolean  @default(false)
+  nofollow             Boolean  @default(false)
+  schemaType           String?
+  customJsonLd         Json?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model ContactSubmission {
+  id                 String            @id @default(cuid())
+  name               String
+  email              String
+  phone              String?
+  companyWebsite     String?
+  currentWebsiteUrl  String?
+  serviceNeeded      String?
+  budgetRange        String?
+  timeline           String?
+  message            String
+  sourcePage         String?
+  status             SubmissionStatus  @default(new)
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  @@index([status])
+}
+
+model AuditRequest {
+  id           String           @id @default(cuid())
+  name         String
+  email        String
+  company      String?
+  websiteUrl   String
+  focus        String?
+  budgetRange  String?
+  message      String
+  sourcePage   String?
+  status       SubmissionStatus @default(new)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+
+  @@index([status])
+}
+
+model Redirect {
+  id               String       @id @default(cuid())
+  sourcePath       String       @unique
+  destinationUrl   String
+  type             RedirectType @default(R301)
+  active           Boolean      @default(true)
+  notes            String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model MediaAsset {
+  id        String   @id @default(cuid())
+  url       String
+  alt       String?
+  caption   String?
+  category  String?
+  width     Int?
+  height    Int?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model AEOBlock {
+  id                String    @id @default(cuid())
+  pagePath          String    @unique
+  primaryQuestion   String?
+  directAnswer      String?
+  keyTakeaways      String[]  @default([])
+  faqs              Json?
+  entityMentions    String[]  @default([])
+  reviewedBy        String?
+  lastReviewedDate  DateTime?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}

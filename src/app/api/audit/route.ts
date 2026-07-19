@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { auditSchema } from "@/lib/schemas";
 import { isEmailConfigured, sendNotificationEmail, renderEmailRows } from "@/lib/email";
+import { isDatabaseConfigured, prisma } from "@/lib/db";
 
 const recentSubmissions = new Map<string, number>();
 const THROTTLE_WINDOW_MS = 15_000;
@@ -46,7 +47,31 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   }
 
+  let dbSaved = false;
+  if (isDatabaseConfigured()) {
+    try {
+      await prisma.auditRequest.create({
+        data: {
+          name: data.name,
+          email: data.email,
+          company: data.company ?? null,
+          websiteUrl: data.websiteUrl,
+          focus: data.focus,
+          budgetRange: data.budgetRange ?? null,
+          message: data.message,
+          sourcePage: "/free-audit",
+        },
+      });
+      dbSaved = true;
+    } catch (err) {
+      console.error("[audit] Failed to save submission to database:", err);
+    }
+  }
+
   if (!isEmailConfigured()) {
+    if (dbSaved) {
+      return NextResponse.json({ success: true });
+    }
     if (process.env.NODE_ENV !== "production") {
       console.error(
         "[audit] Email is not configured. Set RESEND_API_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL.",
@@ -83,6 +108,9 @@ export async function POST(req: Request) {
     });
   } catch (err) {
     console.error("[audit] Failed to send email:", err);
+    if (dbSaved) {
+      return NextResponse.json({ success: true });
+    }
     return NextResponse.json(
       { error: "Something went wrong while sending your audit request. Please try again or schedule a meeting directly." },
       { status: 502 },
