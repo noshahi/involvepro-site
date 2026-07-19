@@ -83,7 +83,7 @@ export default async function InsightArticlePage({ params }: { params: Promise<{
 
         <ArticleRelatedServices slugs={post.relatedServiceSlugs} />
         <ArticleRelatedPosts posts={related} />
-        <ArticleCTA />
+        <ArticleCTA showAuditLink={post.category === "Shopify"} />
       </main>
       <Footer />
     </>

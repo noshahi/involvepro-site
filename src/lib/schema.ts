@@ -167,6 +167,38 @@ export function faqPageSchema(faqs: { question: string; answer: string }[]) {
   };
 }
 
+export function contactPageSchema(params: { name: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: params.name,
+    description: params.description,
+    url: `${SITE_URL}${params.path}`,
+  };
+}
+
+export function serviceOfferSchema(params: { name: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: params.name,
+    name: params.name,
+    description: params.description,
+    url: `${SITE_URL}${params.path}`,
+    provider: {
+      "@type": "Organization",
+      name: "Involvepro",
+      url: SITE_URL,
+    },
+    areaServed: "US",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  };
+}
+
 export function jsonLdProps(data: object) {
   return {
     __html: JSON.stringify(data),

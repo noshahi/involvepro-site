@@ -1,6 +1,8 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
 
-export function ArticleCTA() {
+export function ArticleCTA({ showAuditLink = false }: { showAuditLink?: boolean }) {
   return (
     <section
       aria-label="Schedule a meeting"
@@ -20,6 +22,14 @@ export function ArticleCTA() {
           <ScheduleMeetingButton variant="solid" />
         </div>
         <p className="mt-4 text-[12.5px] text-white/40">Free 30-minute call · No obligation</p>
+        {showAuditLink && (
+          <Link
+            href="/free-audit"
+            className="mt-5 inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#8FE070] hover:text-white"
+          >
+            Or request a Free Audit <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        )}
       </div>
     </section>
   );

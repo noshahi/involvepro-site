@@ -23,7 +23,8 @@ const resourceLinks = [
   { label: "Our Process", href: "/process" },
   { label: "Insights", href: "/insights" },
   { label: "All Services", href: "/services" },
-  { label: "Get in Touch", href: "/#contact" },
+  { label: "Free Audit", href: "/free-audit" },
+  { label: "Get in Touch", href: "/contact" },
 ];
 
 export function Footer() {

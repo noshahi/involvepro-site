@@ -76,7 +76,7 @@ export default function ProcessPage() {
                   project work
                 </Link>
                 , or{" "}
-                <Link href="/#contact" className="font-semibold text-brand-green hover:text-brand-green-deep">
+                <Link href="/contact" className="font-semibold text-brand-green hover:text-brand-green-deep">
                   get in touch
                 </Link>{" "}
                 to talk through your own.
