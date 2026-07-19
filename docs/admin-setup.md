@@ -16,13 +16,17 @@ ADMIN_EMAIL=
 ADMIN_PASSWORD_HASH=
 ```
 
-Existing email variables are unchanged:
+Email is sent through Brevo's transactional email API:
 
 ```
-RESEND_API_KEY=
+BREVO_API_KEY=
 CONTACT_TO_EMAIL=support@involvepro.com
-CONTACT_FROM_EMAIL=
+BREVO_SENDER_EMAIL=
+BREVO_SENDER_NAME=involvepro
 ```
+
+`BREVO_API_KEY` is server-only and must never be exposed to the browser.
+`BREVO_SENDER_EMAIL` must be a sender verified in the Brevo dashboard.
 
 | Variable | Purpose |
 | --- | --- |
@@ -118,8 +122,9 @@ re-checks the session server-side as defense in depth.
 2. If `DATABASE_URL` is configured, save the submission to
    `ContactSubmission` / `AuditRequest` (best-effort — a DB failure is logged
    but does not block the email send).
-3. If Resend is configured, send the notification email as before.
-4. If only the database is configured (no Resend), the submission is saved
+3. If Brevo is configured, send the notification email via
+   `src/lib/email/brevo.ts`.
+4. If only the database is configured (no Brevo), the submission is saved
    and the API returns success.
 5. If neither is configured, the API returns the same safe config-error
    response as before Phase 7A.

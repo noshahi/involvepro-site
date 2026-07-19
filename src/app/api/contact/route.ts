@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/schemas";
-import { isEmailConfigured, sendNotificationEmail, renderEmailRows } from "@/lib/email";
+import { isBrevoConfigured, sendContactEmail } from "@/lib/email/brevo";
 import { isDatabaseConfigured, prisma } from "@/lib/db";
 
 const recentSubmissions = new Map<string, number>();
@@ -65,16 +65,16 @@ export async function POST(req: Request) {
     }
   }
 
-  if (!isEmailConfigured()) {
+  if (!isBrevoConfigured()) {
     if (dbSaved) {
       return NextResponse.json({ success: true });
     }
     if (process.env.NODE_ENV !== "production") {
       console.error(
-        "[contact] Email is not configured. Set RESEND_API_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL.",
+        "[contact] Email is not configured. Set BREVO_API_KEY, CONTACT_TO_EMAIL, and BREVO_SENDER_EMAIL.",
       );
       return NextResponse.json(
-        { error: "Email is not configured on this server. Set RESEND_API_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL." },
+        { error: "Email is not configured on this server. Set BREVO_API_KEY, CONTACT_TO_EMAIL, and BREVO_SENDER_EMAIL." },
         { status: 500 },
       );
     }
@@ -84,26 +84,17 @@ export async function POST(req: Request) {
     );
   }
 
-  const { html, text } = renderEmailRows([
-    { label: "Name", value: data.name },
-    { label: "Email", value: data.email },
-    { label: "Phone", value: data.phone },
-    { label: "Company / Website", value: data.companyWebsite },
-    { label: "Current Website URL", value: data.currentWebsiteUrl },
-    { label: "Service Needed", value: data.serviceNeeded },
-    { label: "Budget Range", value: data.budgetRange },
-    { label: "Timeline", value: data.timeline },
-    { label: "Message", value: data.message },
-    { label: "Submitted", value: new Date().toISOString() },
-    { label: "Source page", value: "/contact" },
-  ]);
-
   try {
-    await sendNotificationEmail({
-      subject: "New Website Inquiry from involvepro Contact Form",
-      replyTo: data.email,
-      html,
-      text,
+    await sendContactEmail({
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      companyWebsite: data.companyWebsite,
+      currentWebsiteUrl: data.currentWebsiteUrl,
+      serviceNeeded: data.serviceNeeded,
+      budgetRange: data.budgetRange,
+      timeline: data.timeline,
+      message: data.message,
     });
   } catch (err) {
     console.error("[contact] Failed to send email:", err);

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { auditSchema } from "@/lib/schemas";
-import { isEmailConfigured, sendNotificationEmail, renderEmailRows } from "@/lib/email";
+import { isBrevoConfigured, sendAuditEmail } from "@/lib/email/brevo";
 import { isDatabaseConfigured, prisma } from "@/lib/db";
 
 const recentSubmissions = new Map<string, number>();
@@ -68,16 +68,16 @@ export async function POST(req: Request) {
     }
   }
 
-  if (!isEmailConfigured()) {
+  if (!isBrevoConfigured()) {
     if (dbSaved) {
       return NextResponse.json({ success: true });
     }
     if (process.env.NODE_ENV !== "production") {
       console.error(
-        "[audit] Email is not configured. Set RESEND_API_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL.",
+        "[audit] Email is not configured. Set BREVO_API_KEY, CONTACT_TO_EMAIL, and BREVO_SENDER_EMAIL.",
       );
       return NextResponse.json(
-        { error: "Email is not configured on this server. Set RESEND_API_KEY, CONTACT_TO_EMAIL, and CONTACT_FROM_EMAIL." },
+        { error: "Email is not configured on this server. Set BREVO_API_KEY, CONTACT_TO_EMAIL, and BREVO_SENDER_EMAIL." },
         { status: 500 },
       );
     }
@@ -87,24 +87,15 @@ export async function POST(req: Request) {
     );
   }
 
-  const { html, text } = renderEmailRows([
-    { label: "Name", value: data.name },
-    { label: "Email", value: data.email },
-    { label: "Company", value: data.company },
-    { label: "Website URL", value: data.websiteUrl },
-    { label: "Audit Focus", value: data.focus },
-    { label: "Budget Range", value: data.budgetRange },
-    { label: "Message", value: data.message },
-    { label: "Submitted", value: new Date().toISOString() },
-    { label: "Source page", value: "/free-audit" },
-  ]);
-
   try {
-    await sendNotificationEmail({
-      subject: "New Free Audit Request from involvepro Website",
-      replyTo: data.email,
-      html,
-      text,
+    await sendAuditEmail({
+      name: data.name,
+      email: data.email,
+      company: data.company,
+      websiteUrl: data.websiteUrl,
+      focus: data.focus,
+      budgetRange: data.budgetRange,
+      message: data.message,
     });
   } catch (err) {
     console.error("[audit] Failed to send email:", err);
