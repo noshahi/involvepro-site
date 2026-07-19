@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   ShoppingBag, Layers, Workflow, Search, Globe, LayoutTemplate,
   Code2, TrendingUp, ShieldCheck, Zap, ArrowRight,
@@ -39,9 +40,9 @@ export function BentoServices() {
               One technical team for websites, ecommerce, SaaS, SEO, and automation.
             </h2>
           </div>
-          <a href="/services" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
+          <Link href="/services" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
             View all services →
-          </a>
+          </Link>
         </div>
 
         <RevealOnScroll stagger className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

@@ -171,7 +171,7 @@ export function ServiceCategoryBand({ group, services }: { group: ServiceGroup; 
                   className="group flex h-full flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-1 hover:border-brand-blue/40"
                 >
                   <div>
-                    <span className="font-mono text-[11px] text-brand-blue">// {s.slug}</span>
+                    <span className="font-mono text-[11px] text-brand-blue">{"// "}{s.slug}</span>
                     <div className={cn("my-4 flex h-10 w-10 items-center justify-center rounded-lg", accentClasses[s.accent])}>
                       <ServiceIcon slug={s.icon} className="h-4 w-4 text-white" />
                     </div>

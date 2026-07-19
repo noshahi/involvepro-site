@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionEyebrow } from "@/components/ui/GlassCard";
 import { RevealOnScroll, RevealItem } from "@/components/ui/RevealOnScroll";
@@ -21,9 +22,9 @@ export function WorkBento() {
               Work across ecommerce, B2B, SaaS, and high-visibility brands.
             </h2>
           </div>
-          <a href="/work" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
+          <Link href="/work" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
             View all projects →
-          </a>
+          </Link>
         </div>
 
         <RevealOnScroll stagger className="grid grid-cols-1 gap-5 md:grid-cols-6 md:auto-rows-[110px]">

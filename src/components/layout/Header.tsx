@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, navServiceGroups } from "@/lib/data/nav";
@@ -123,12 +124,12 @@ export function Header() {
                         </div>
                       ))}
                     </div>
-                    <a
+                    <Link
                       href="/services"
                       className="mt-6 flex items-center justify-between rounded-xl bg-canvas-soft px-4 py-3 text-[13px] font-semibold text-brand-green hover:bg-brand-green-soft"
                     >
                       View all 22 services →
-                    </a>
+                    </Link>
                   </motion.div>
                 )}
               </AnimatePresence>
