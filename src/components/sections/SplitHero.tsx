@@ -60,12 +60,19 @@ export function SplitHero() {
             className="mt-9 flex flex-wrap gap-3.5"
           >
             <MagneticButton href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" variant="solid">
-              Book a Call <ArrowRight className="h-4 w-4" />
+              Schedule a Meeting <ArrowRight className="h-4 w-4" />
             </MagneticButton>
             <MagneticButton href="#services" variant="outline">
               Explore Services
             </MagneticButton>
           </motion.div>
+
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 12 }, show: { opacity: 1, y: 0 } }}
+            className="mt-4 text-[12.5px] text-white/35"
+          >
+            Free 30-minute call · No obligation
+          </motion.p>
 
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}

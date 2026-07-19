@@ -27,8 +27,8 @@
   --color-text-muted: var(--text-muted);
   --color-border-soft: var(--border-soft);
 
-  --font-sans: var(--font-plex-sans);
-  --font-mono: var(--font-plex-mono);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 
   --animate-marquee: marquee 42s linear infinite;
   --animate-marquee-reverse: marquee-reverse 38s linear infinite;

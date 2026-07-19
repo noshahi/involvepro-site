@@ -12,11 +12,12 @@ export function FinalCTA() {
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-20" />
       <div className="relative mx-auto max-w-[680px]">
         <h2 className="font-sans text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-[-1px] text-white">
-          Need a technical team that can build, optimize, and keep improving?
+          Let&apos;s scope your next build — no deck, no pressure.
         </h2>
         <p className="mx-auto mt-5 max-w-[480px] text-[16px] leading-relaxed text-white/70">
-          Book a call to discuss your Shopify store, WordPress website, SaaS product, SEO system,
-          AI automation, or custom development project.
+          30 minutes with our technical team to walk through your Shopify store, WordPress site,
+          SaaS product, SEO system, or AI automation, and leave with a clear next step — whether
+          that&apos;s us or not.
         </p>
         <div className="mt-9 flex justify-center">
           <MagneticButton
@@ -25,9 +26,10 @@ export function FinalCTA() {
             rel="noopener noreferrer"
             variant="solid"
           >
-            Book a Call <ArrowRight className="h-4 w-4" />
+            Schedule a Meeting <ArrowRight className="h-4 w-4" />
           </MagneticButton>
         </div>
+        <p className="mt-4 text-[12.5px] text-white/40">Free 30-minute call · No obligation</p>
       </div>
     </section>
   );

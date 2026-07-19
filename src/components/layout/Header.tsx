@@ -140,7 +140,7 @@ export function Header() {
             rel="noopener noreferrer"
             className="hidden rounded-full bg-brand-green px-5 py-2.5 text-[14px] font-semibold text-white transition-transform hover:-translate-y-0.5 hover:bg-brand-green-deep sm:inline-flex"
           >
-            Book a Call
+            Schedule a Meeting
           </a>
           <button
             onClick={() => setMenuOpen((v) => !v)}
@@ -189,7 +189,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 className="mt-3 rounded-full bg-brand-green px-5 py-3.5 text-center text-[15px] font-semibold text-white"
               >
-                Book a Call
+                Schedule a Meeting
               </motion.a>
             </motion.div>
           </motion.div>
