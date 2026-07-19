@@ -1,4 +1,4 @@
-import { marqueeServices } from "@/lib/data/services";
+import { marqueeServices } from "@/data/services";
 
 function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
   const items = [...marqueeServices, ...marqueeServices];

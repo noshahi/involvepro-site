@@ -1,10 +1,10 @@
 import {
-  ShoppingBag, Layers, Workflow, Search, Globe, LayoutGrid,
+  ShoppingBag, Layers, Workflow, Search, Globe, LayoutTemplate,
   Code2, TrendingUp, ShieldCheck, Zap, ArrowRight,
 } from "lucide-react";
 import { SectionEyebrow } from "@/components/ui/GlassCard";
 import { RevealOnScroll, RevealItem } from "@/components/ui/RevealOnScroll";
-import { primaryServices, secondaryServices } from "@/lib/data/services";
+import { primaryServices, secondaryServices } from "@/data/services";
 
 const primaryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "shopping-bag": ShoppingBag,
@@ -15,7 +15,7 @@ const primaryIcons: Record<string, React.ComponentType<{ className?: string }>> 
 
 const secondaryIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   globe: Globe,
-  "layout-grid": LayoutGrid,
+  "layout-template": LayoutTemplate,
   "code-2": Code2,
   "trending-up": TrendingUp,
   "shield-check": ShieldCheck,
@@ -39,7 +39,7 @@ export function BentoServices() {
               One technical team for websites, ecommerce, SaaS, SEO, and automation.
             </h2>
           </div>
-          <a href="#work" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
+          <a href="/services" className="font-semibold text-[14.5px] text-brand-green hover:text-brand-green-deep">
             View all services →
           </a>
         </div>
@@ -50,7 +50,7 @@ export function BentoServices() {
             return (
               <RevealItem key={s.title}>
                 <a
-                  href="#work"
+                  href={`/services/${s.slug}`}
                   className="group flex h-full flex-col justify-between rounded-2xl border border-border-soft bg-white p-7 shadow-[0_1px_2px_rgba(6,18,13,0.04)] transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(6,18,13,0.1)]"
                 >
                   <div>
@@ -58,10 +58,10 @@ export function BentoServices() {
                       <Icon className="h-5 w-5 text-white" />
                     </div>
                     <span className="font-mono text-[10.5px] font-medium uppercase tracking-[0.12em] text-text-muted">
-                      {s.category}
+                      {s.eyebrow}
                     </span>
                     <h3 className="mt-2 text-[18px] font-semibold text-canvas-dark">{s.title}</h3>
-                    <p className="mt-2.5 text-[13.5px] leading-relaxed text-text-muted">{s.description}</p>
+                    <p className="mt-2.5 text-[13.5px] leading-relaxed text-text-muted">{s.shortDescription}</p>
                   </div>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand-green">
                     Explore Service
@@ -79,7 +79,7 @@ export function BentoServices() {
             return (
               <RevealItem key={s.title}>
                 <a
-                  href="#work"
+                  href={`/services/${s.slug}`}
                   className="group flex items-center gap-4 rounded-2xl border border-border-soft bg-white px-6 py-5 transition-all hover:-translate-y-0.5 hover:border-brand-green/40 hover:shadow-[0_12px_28px_rgba(6,18,13,0.08)]"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-canvas-soft">
@@ -87,7 +87,7 @@ export function BentoServices() {
                   </div>
                   <div>
                     <h3 className="text-[14.5px] font-semibold text-canvas-dark">{s.title}</h3>
-                    <p className="mt-0.5 text-[12.5px] text-text-muted">{s.description}</p>
+                    <p className="mt-0.5 text-[12.5px] text-text-muted">{s.shortDescription}</p>
                   </div>
                 </a>
               </RevealItem>

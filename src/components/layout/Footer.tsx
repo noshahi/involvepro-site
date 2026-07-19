@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
 import { navLinks } from "@/lib/data/nav";
-import { primaryServices, secondaryServices } from "@/lib/data/services";
+import { primaryServices, secondaryServices } from "@/data/services";
 
 const CALENDLY_URL = "https://calendly.com/involvepro/30min";
 
@@ -13,14 +13,17 @@ const socialLinks = [
   { label: "Google Business Profile", href: "https://maps.app.goo.gl/rxxja2yAooTeWfCD9", mark: "Gb" },
 ];
 
-const serviceLinks = [...primaryServices.map((s) => s.title), ...secondaryServices.slice(0, 2).map((s) => s.title)];
+const footerServiceLinks = [...primaryServices, ...secondaryServices.slice(0, 2)].map((s) => ({
+  label: s.title,
+  href: `/services/${s.slug}`,
+}));
 
 const resourceLinks = [
-  { label: "Featured Work", href: "#work" },
-  { label: "Our Process", href: "#process" },
-  { label: "Insights", href: "#insights" },
-  { label: "All Services", href: "#services" },
-  { label: "Get in Touch", href: "#contact" },
+  { label: "Featured Work", href: "/#work" },
+  { label: "Our Process", href: "/#process" },
+  { label: "Insights", href: "/#insights" },
+  { label: "All Services", href: "/services" },
+  { label: "Get in Touch", href: "/#contact" },
 ];
 
 export function Footer() {
@@ -57,10 +60,10 @@ export function Footer() {
             Services
           </p>
           <ul className="flex flex-col gap-3">
-            {serviceLinks.map((title) => (
-              <li key={title}>
-                <a href="#services" className="text-[13.5px] leading-snug text-white/65 hover:text-white">
-                  {title}
+            {footerServiceLinks.map(({ label, href }) => (
+              <li key={label}>
+                <a href={href} className="text-[13.5px] leading-snug text-white/65 hover:text-white">
+                  {label}
                 </a>
               </li>
             ))}

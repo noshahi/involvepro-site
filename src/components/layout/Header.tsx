@@ -101,9 +101,9 @@ export function Header() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 8 }}
                     transition={{ duration: 0.18, ease: "easeOut" }}
-                    className="absolute left-1/2 top-full mt-3 w-[620px] -translate-x-1/2 rounded-2xl border border-border-soft bg-white p-6 shadow-[0_24px_60px_rgba(6,18,13,0.16)]"
+                    className="absolute left-1/2 top-full mt-3 w-[860px] max-w-[92vw] -translate-x-1/2 rounded-2xl border border-border-soft bg-white p-6 shadow-[0_24px_60px_rgba(6,18,13,0.16)]"
                   >
-                    <div className="grid grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 gap-x-8 gap-y-6 lg:grid-cols-5">
                       {navServiceGroups.map((group) => (
                         <div key={group.heading}>
                           <p className="mb-3 font-mono text-[11px] font-medium uppercase tracking-[0.14em] text-text-muted">
@@ -112,12 +112,9 @@ export function Header() {
                           <ul className="flex flex-col gap-3">
                             {group.items.map((svc) => (
                               <li key={svc.title}>
-                                <a href="#services" className="group block">
-                                  <span className="block text-[13.5px] font-semibold text-canvas-dark group-hover:text-brand-green">
+                                <a href={`/services/${svc.slug}`} className="group block">
+                                  <span className="block text-[13px] font-semibold leading-snug text-canvas-dark group-hover:text-brand-green">
                                     {svc.title}
-                                  </span>
-                                  <span className="mt-0.5 block text-[12px] leading-snug text-text-muted">
-                                    {svc.description}
                                   </span>
                                 </a>
                               </li>
@@ -126,6 +123,12 @@ export function Header() {
                         </div>
                       ))}
                     </div>
+                    <a
+                      href="/services"
+                      className="mt-6 flex items-center justify-between rounded-xl bg-canvas-soft px-4 py-3 text-[13px] font-semibold text-brand-green hover:bg-brand-green-soft"
+                    >
+                      View all 22 services →
+                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
