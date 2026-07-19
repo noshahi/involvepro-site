@@ -9,7 +9,11 @@
     "lint": "eslint",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "build:cpanel": "next build && node scripts/copy-standalone-assets.js",
+    "start:cpanel": "node server.js",
+    "prisma:deploy": "prisma migrate deploy",
+    "prisma:seed": "prisma db seed"
   },
   "dependencies": {
     "@getbrevo/brevo": "^6.0.2",
