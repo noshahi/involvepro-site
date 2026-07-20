@@ -6,11 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "postinstall": "prisma generate",
     "lint": "eslint",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:seed": "tsx prisma/seed.ts",
-    "build:cpanel": "next build --webpack && node scripts/copy-standalone-assets.js",
+    "build:cpanel": "CPANEL_BUILD=1 next build --webpack && node scripts/copy-standalone-assets.js",
     "start:cpanel": "node server.js",
     "prisma:deploy": "prisma migrate deploy",
     "prisma:seed": "prisma db seed"
