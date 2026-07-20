@@ -58,53 +58,65 @@ export default function SeoForm({ initialValues }: { initialValues: SeoFormValue
       <Field label="Canonical URL">
         <input name="canonicalUrl" defaultValue={initialValues.canonicalUrl} className={inputClass} />
       </Field>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <Field label="OG Title">
-          <input name="ogTitle" defaultValue={initialValues.ogTitle} className={inputClass} />
-        </Field>
-        <Field label="OG Image">
-          <input name="ogImage" defaultValue={initialValues.ogImage} className={inputClass} />
-        </Field>
-      </div>
-      <Field label="OG Description">
-        <textarea name="ogDescription" rows={2} defaultValue={initialValues.ogDescription} className={inputClass} />
-      </Field>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <Field label="Twitter Title">
-          <input name="twitterTitle" defaultValue={initialValues.twitterTitle} className={inputClass} />
-        </Field>
-        <Field label="Twitter Image">
-          <input name="twitterImage" defaultValue={initialValues.twitterImage} className={inputClass} />
+
+      <div className="space-y-4 border-t border-border-soft pt-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-text-muted">Open Graph</p>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Field label="OG Title">
+            <input name="ogTitle" defaultValue={initialValues.ogTitle} className={inputClass} />
+          </Field>
+          <Field label="OG Image">
+            <input name="ogImage" defaultValue={initialValues.ogImage} className={inputClass} />
+          </Field>
+        </div>
+        <Field label="OG Description">
+          <textarea name="ogDescription" rows={2} defaultValue={initialValues.ogDescription} className={inputClass} />
         </Field>
       </div>
-      <Field label="Twitter Description">
-        <textarea
-          name="twitterDescription"
-          rows={2}
-          defaultValue={initialValues.twitterDescription}
-          className={inputClass}
-        />
-      </Field>
-      <Field label="Schema Type">
-        <input name="schemaType" defaultValue={initialValues.schemaType} className={inputClass} />
-      </Field>
-      <Field label="Custom JSON-LD Override (valid JSON)">
-        <textarea
-          name="customJsonLd"
-          rows={5}
-          defaultValue={initialValues.customJsonLd}
-          className={`${inputClass} font-mono`}
-        />
-      </Field>
-      <div className="flex gap-6">
-        <label className="flex items-center gap-2 text-sm">
-          <input type="checkbox" name="noindex" defaultChecked={initialValues.noindex} />
-          Noindex
-        </label>
-        <label className="flex items-center gap-2 text-sm">
-          <input type="checkbox" name="nofollow" defaultChecked={initialValues.nofollow} />
-          Nofollow
-        </label>
+
+      <div className="space-y-4 border-t border-border-soft pt-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-text-muted">Twitter</p>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <Field label="Twitter Title">
+            <input name="twitterTitle" defaultValue={initialValues.twitterTitle} className={inputClass} />
+          </Field>
+          <Field label="Twitter Image">
+            <input name="twitterImage" defaultValue={initialValues.twitterImage} className={inputClass} />
+          </Field>
+        </div>
+        <Field label="Twitter Description">
+          <textarea
+            name="twitterDescription"
+            rows={2}
+            defaultValue={initialValues.twitterDescription}
+            className={inputClass}
+          />
+        </Field>
+      </div>
+
+      <div className="space-y-4 border-t border-border-soft pt-4">
+        <p className="text-xs font-semibold uppercase tracking-wide text-text-muted">Advanced</p>
+        <Field label="Schema Type">
+          <input name="schemaType" defaultValue={initialValues.schemaType} className={inputClass} />
+        </Field>
+        <Field label="Custom JSON-LD Override (valid JSON)">
+          <textarea
+            name="customJsonLd"
+            rows={5}
+            defaultValue={initialValues.customJsonLd}
+            className={`${inputClass} font-mono`}
+          />
+        </Field>
+        <div className="flex gap-6">
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="noindex" defaultChecked={initialValues.noindex} />
+            Noindex
+          </label>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="nofollow" defaultChecked={initialValues.nofollow} />
+            Nofollow
+          </label>
+        </div>
       </div>
 
       <button

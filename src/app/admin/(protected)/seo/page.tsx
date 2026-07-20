@@ -29,13 +29,13 @@ export default async function SeoManagerPage() {
     <div className="space-y-6">
       <Header />
       <div className="overflow-x-auto rounded-lg border border-border-soft bg-white">
-        <table className="w-full min-w-[640px] text-left text-sm">
+        <table className="w-full min-w-[820px] text-left text-sm">
           <thead className="border-b border-border-soft bg-canvas-soft text-xs uppercase text-text-muted">
             <tr>
               <th className="px-4 py-3">Page</th>
               <th className="px-4 py-3">Path</th>
-              <th className="px-4 py-3">Meta Title</th>
-              <th className="px-4 py-3">Status</th>
+              <th className="px-4 py-3">Override</th>
+              <th className="px-4 py-3">Checks</th>
               <th className="px-4 py-3 text-right">Actions</th>
             </tr>
           </thead>
@@ -43,12 +43,14 @@ export default async function SeoManagerPage() {
             {KEY_PAGES.map((page) => {
               const record = byPath.get(page.path);
               return (
-                <tr key={page.path} className="border-b border-border-soft last:border-0">
+                <tr key={page.path} className="border-b border-border-soft last:border-0 align-top">
                   <td className="px-4 py-3 font-medium text-[var(--brand-navy)]">{page.pageName}</td>
                   <td className="px-4 py-3 text-text-muted">{page.path}</td>
-                  <td className="px-4 py-3 text-text-muted">{record?.metaTitle || "—"}</td>
                   <td className="px-4 py-3 text-text-muted">
                     {record ? "Custom override set" : "Using static default"}
+                  </td>
+                  <td className="px-4 py-3">
+                    <CheckList record={record} />
                   </td>
                   <td className="px-4 py-3 text-right">
                     <Link
@@ -64,6 +66,45 @@ export default async function SeoManagerPage() {
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+type SeoRecord = {
+  metaTitle: string | null;
+  metaDescription: string | null;
+  canonicalUrl: string | null;
+  noindex: boolean;
+  ogTitle: string | null;
+  ogDescription: string | null;
+  ogImage: string | null;
+} | undefined;
+
+function CheckList({ record }: { record: SeoRecord }) {
+  const checks: { label: string; ok: boolean }[] = [
+    { label: "Meta title", ok: Boolean(record?.metaTitle) },
+    { label: "Meta description", ok: Boolean(record?.metaDescription) },
+    { label: "Canonical", ok: Boolean(record?.canonicalUrl) },
+    { label: "OG data", ok: Boolean(record?.ogTitle || record?.ogDescription || record?.ogImage) },
+  ];
+
+  return (
+    <div className="flex flex-wrap gap-1.5">
+      {checks.map((c) => (
+        <span
+          key={c.label}
+          className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
+            c.ok ? "bg-brand-green-soft text-brand-green-deep" : "bg-gray-100 text-gray-500"
+          }`}
+        >
+          {c.ok ? "✓" : "–"} {c.label}
+        </span>
+      ))}
+      {record?.noindex && (
+        <span className="inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-700">
+          Noindex
+        </span>
+      )}
     </div>
   );
 }

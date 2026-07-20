@@ -43,6 +43,21 @@ Insights, Contact, and Free Audit. Priorities for that pass:
 - more AEO/GEO answer blocks where useful
 - less generic "technical systems" repetition
 
+## Pages needing copy review (checklist)
+
+Track progress here as pages get their human editing pass. Do not check
+these off as part of a structural/feature task — only when copy has
+actually been reviewed and rewritten.
+
+- [ ] Home
+- [ ] Services hub
+- [ ] 22 service pages (see `src/data/services.ts` for the full list)
+- [ ] Work
+- [ ] Process
+- [ ] Insights
+- [ ] Contact
+- [ ] Free Audit
+
 ## Remaining Insights articles
 
 The Insights system has 8 seed articles; only the Shopify redesign article

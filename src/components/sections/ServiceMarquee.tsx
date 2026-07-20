@@ -25,10 +25,7 @@ function MarqueeRow({ reverse = false }: { reverse?: boolean }) {
 export function ServiceMarquee() {
   return (
     <section aria-label="Services ticker" className="overflow-hidden border-y border-white/10 bg-canvas-navy py-5">
-      <div className="flex flex-col gap-4">
-        <MarqueeRow />
-        <MarqueeRow reverse />
-      </div>
+      <MarqueeRow />
     </section>
   );
 }
