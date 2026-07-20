@@ -19,13 +19,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://involvepro.com"),
-  title: "Involvepro | Shopify, WordPress & SEO Development Agency for USA Ecommerce Brands",
+  title: "involvepro | Technical Web Development Agency (USA)",
   description:
-    "Involvepro is a technical Shopify Select Partner and WordPress development agency building high-converting, custom-coded websites, ecommerce stores, SaaS products, and AI automations for USA-based brands.",
+    "Technical web development agency for USA businesses — Shopify, WordPress, SaaS, AI automation, and technical SEO under one team. Schedule a free audit.",
   openGraph: {
-    title: "Involvepro — Shopify, WordPress & SEO Development Agency",
+    title: "involvepro — Technical Web Development Agency",
     description:
-      "Custom-coded Shopify and WordPress websites, ecommerce SEO, SaaS product development, AI automation, and technical support for USA-focused businesses.",
+      "Shopify, WordPress, SaaS, AI automation, and technical SEO — one technical team, 400+ projects, USA-focused clients.",
     type: "website",
     url: "https://involvepro.com/",
   },

@@ -59,8 +59,8 @@ export function SplitHero() {
             className="mt-9 flex flex-wrap gap-3.5"
           >
             <ScheduleMeetingButton variant="solid" />
-            <MagneticButton href="#services" variant="outline">
-              Explore Services
+            <MagneticButton href="/free-audit" variant="outline">
+              Request a Free Audit
             </MagneticButton>
           </motion.div>
 

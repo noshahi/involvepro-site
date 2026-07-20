@@ -1,4 +1,5 @@
 import { ScheduleMeetingButton } from "@/components/ui/ScheduleMeetingButton";
+import { MagneticButton } from "@/components/ui/MagneticButton";
 
 export function FinalCTA() {
   return (
@@ -11,15 +12,18 @@ export function FinalCTA() {
       <div className="grid-overlay pointer-events-none absolute inset-0 opacity-20" />
       <div className="relative mx-auto max-w-[680px]">
         <h2 className="font-sans text-[clamp(28px,4vw,44px)] font-bold leading-[1.1] tracking-[-1px] text-white">
-          Let&apos;s scope your next build — no deck, no pressure.
+          Ready to build a cleaner, faster, more useful digital system?
         </h2>
         <p className="mx-auto mt-5 max-w-[480px] text-[16px] leading-relaxed text-white/70">
           30 minutes with our technical team to walk through your Shopify store, WordPress site,
           SaaS product, SEO system, or AI automation, and leave with a clear next step — whether
           that&apos;s us or not.
         </p>
-        <div className="mt-9 flex justify-center">
+        <div className="mt-9 flex flex-wrap justify-center gap-3.5">
           <ScheduleMeetingButton variant="solid" />
+          <MagneticButton href="/free-audit" variant="outline">
+            Request a Free Audit
+          </MagneticButton>
         </div>
         <p className="mt-4 text-[12.5px] text-white/40">Free 30-minute call · No obligation</p>
       </div>
