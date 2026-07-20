@@ -103,6 +103,7 @@ export async function createPostAction(_prev: PostFormState, formData: FormData)
 
   revalidatePath("/admin/posts");
   revalidatePath("/insights");
+  revalidatePath(`/insights/${post.slug}`);
   redirect(`/admin/posts/${post.id}`);
 }
 
@@ -171,21 +172,24 @@ export async function updatePostAction(
   revalidatePath("/admin/posts");
   revalidatePath(`/admin/posts/${id}`);
   revalidatePath("/insights");
+  revalidatePath(`/insights/${data.slug}`);
+  if (current.slug !== data.slug) revalidatePath(`/insights/${current.slug}`);
   return { error: undefined };
 }
 
 export async function deletePostAction(id: string) {
   await requireAdmin();
   if (!isDatabaseConfigured()) return;
-  await prisma.blogPost.update({ where: { id }, data: { status: "archived" } });
+  const post = await prisma.blogPost.update({ where: { id }, data: { status: "archived" } });
   revalidatePath("/admin/posts");
   revalidatePath("/insights");
+  revalidatePath(`/insights/${post.slug}`);
 }
 
 export async function togglePublishAction(id: string, publish: boolean) {
   await requireAdmin();
   if (!isDatabaseConfigured()) return;
-  await prisma.blogPost.update({
+  const post = await prisma.blogPost.update({
     where: { id },
     data: {
       status: publish ? "published" : "draft",
@@ -195,4 +199,5 @@ export async function togglePublishAction(id: string, publish: boolean) {
   });
   revalidatePath("/admin/posts");
   revalidatePath("/insights");
+  revalidatePath(`/insights/${post.slug}`);
 }
