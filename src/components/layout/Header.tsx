@@ -63,10 +63,10 @@ export function Header() {
           />
           <Image
             src="/brand/shopify-select-badge.svg"
-            alt="Shopify Select Partner"
-            width={92}
-            height={24}
-            className="hidden h-5 w-auto rounded-md bg-white px-1.5 py-1 sm:block"
+            alt="Shopify Partner"
+            width={101}
+            height={45}
+            className="hidden h-8 w-auto max-w-[125px] rounded-md bg-white px-2 py-1.5 object-contain sm:block lg:h-9 lg:max-w-[150px]"
           />
         </Link>
 
@@ -185,6 +185,18 @@ export function Header() {
                   </Link>
                 </motion.div>
               ))}
+              <motion.div
+                variants={{ hidden: { opacity: 0, x: -12 }, show: { opacity: 1, x: 0 } }}
+                className="mt-2 flex items-center gap-2 px-3 sm:hidden"
+              >
+                <Image
+                  src="/brand/shopify-select-badge.svg"
+                  alt="Shopify Partner"
+                  width={101}
+                  height={45}
+                  className="h-8 w-auto max-w-[125px] rounded-md bg-canvas-soft px-2 py-1.5 object-contain"
+                />
+              </motion.div>
               <motion.button
                 type="button"
                 variants={{ hidden: { opacity: 0, x: -12 }, show: { opacity: 1, x: 0 } }}

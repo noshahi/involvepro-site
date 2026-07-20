@@ -6,7 +6,11 @@ export type SiteImageCategory =
   | "ecommerce"
   | "support"
   | "office"
-  | "project";
+  | "project"
+  | "client-work"
+  | "meeting"
+  | "audit"
+  | "automation";
 
 export type SiteImage = {
   id: string;
@@ -25,14 +29,18 @@ export type SiteImage = {
  * for the planned copy pass that will accompany this).
  *
  * Suggested placement once assets exist:
- * - "team"     -> About/team sections, footer trust strip
- * - "strategy" -> Process discovery/strategy panels, RequirementGathering
- * - "process"  -> ProcessOverviewRail, CommunicationModel
+ * - "team"        -> Home proof/testimonial strip, About story section
+ * - "strategy"    -> Process discovery/strategy panels, RequirementGathering
+ * - "process"     -> Process communication section, ProcessOverviewRail, CommunicationModel
  * - "development" -> Service detail pages (Shopify/WordPress/full-stack), ProjectServicesDelivered
- * - "ecommerce"-> Shopify/CRO service pages, ecommerce case studies
- * - "support"  -> Website Maintenance & Support service page, ProcessQualityAssurance
- * - "office"   -> About page, testimonial/proof sections
- * - "project"  -> Work/[slug] galleries as a supplement to abstract visuals
+ * - "ecommerce"   -> Shopify/CRO service pages, ecommerce case studies
+ * - "support"     -> Website Maintenance & Support service page, ProcessQualityAssurance
+ * - "office"      -> About page, Contact trust panel
+ * - "project"     -> Work project detail pages, as a supplement to abstract visuals
+ * - "client-work" -> Work list/detail pages, case study proof blocks
+ * - "meeting"     -> Contact trust panel, Schedule a Meeting / Calendly context
+ * - "audit"       -> Free Audit value section
+ * - "automation"  -> AI/automation service pages, Services hero visuals where relevant
  */
 export const siteImages: SiteImage[] = [];
 
