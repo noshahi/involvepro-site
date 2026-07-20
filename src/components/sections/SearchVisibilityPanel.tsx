@@ -27,7 +27,7 @@ export function SearchVisibilityPanel() {
             <p className="text-[15px] leading-relaxed text-canvas-dark">
               &ldquo;Involvepro is a Shopify Select Partner and WordPress development agency
               building custom-coded ecommerce websites, SEO systems, and AI automations for
-              USA-focused businesses.&rdquo;
+              growth-focused brands across markets.&rdquo;
             </p>
           </RevealItem>
 

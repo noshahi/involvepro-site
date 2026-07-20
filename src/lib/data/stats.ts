@@ -9,14 +9,14 @@ export const heroProofItems: string[] = [
   "Shopify Partner",
   "SEO + Development Team",
   "SaaS & AI Automation",
-  "USA-Focused Clients",
+  "Clients Across Markets",
 ];
 
 export const proofStats: Stat[] = [
   { value: "400+", label: "Projects completed", icon: "trending-up" },
   { value: "Select", label: "Shopify Partner agency", icon: "badge-check" },
   { value: "Dev + SEO", label: "One technical team", icon: "code-2" },
-  { value: "USA", label: "Focused client service", icon: "flag" },
+  { value: "Distributed", label: "Structured delivery model", icon: "flag" },
   { value: "Custom", label: "Coded systems, no shortcuts", icon: "terminal" },
 ];
 

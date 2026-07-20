@@ -19,6 +19,7 @@ export const navLinks = [
   { label: "Services", href: "/services", hasMegaMenu: true },
   { label: "Work", href: "/work" },
   { label: "Process", href: "/process" },
+  { label: "About", href: "/about" },
   { label: "Insights", href: "/insights" },
   { label: "Free Audit", href: "/free-audit" },
   { label: "Contact", href: "/contact" },

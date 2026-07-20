@@ -29,7 +29,7 @@ const howWeHelp = [
 export default function ServicesPage() {
   const collectionSchema = collectionPageSchema({
     name: "Involvepro Services",
-    description: "Shopify, WordPress, SaaS, SEO, AEO, and AI automation services for USA-focused businesses.",
+    description: "Shopify, WordPress, SaaS, SEO, AEO, and AI automation services for growth-focused brands across markets.",
     path: "/services",
   });
   const breadcrumbs = breadcrumbSchema([

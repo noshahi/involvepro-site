@@ -19,6 +19,7 @@ const footerServiceLinks = [...primaryServices, ...secondaryServices.slice(0, 2)
 }));
 
 const resourceLinks = [
+  { label: "About Us", href: "/about" },
   { label: "Featured Work", href: "/work" },
   { label: "Our Process", href: "/process" },
   { label: "Insights", href: "/insights" },
@@ -39,7 +40,7 @@ export function Footer() {
           </div>
           <p className="mb-6 max-w-[280px] text-[13.5px] leading-relaxed text-white/50">
             Shopify Select Partner and WordPress development agency building custom-coded ecommerce
-            websites, SaaS products, AI automations, and SEO systems for USA-focused businesses.
+            websites, SaaS products, AI automations, and SEO systems for growth-focused brands across markets.
           </p>
           <div className="flex flex-wrap gap-2">
             {socialLinks.map(({ label, href, mark }) => (
@@ -103,7 +104,7 @@ export function Footer() {
             </li>
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-green" />
-              <span>Jhelum, Pakistan — serving USA clients</span>
+              <span>Jhelum, Pakistan — clients across markets</span>
             </li>
           </ul>
           <ScheduleMeetingButton variant="solid" className="mt-5 px-5 py-2.5 text-[13.5px]" />

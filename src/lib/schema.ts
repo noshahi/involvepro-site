@@ -199,6 +199,44 @@ export function serviceOfferSchema(params: { name: string; description: string; 
   };
 }
 
+export function organizationSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Involvepro",
+    url: SITE_URL,
+    logo: `${SITE_URL}/brand/logo-black.svg`,
+    description:
+      "Technical web development agency helping ecommerce, SaaS, and service businesses build cleaner websites, stronger digital systems, and more reliable growth infrastructure — Shopify, WordPress, SaaS, SEO, and AI automation under one team.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Jhelum",
+      addressCountry: "PK",
+    },
+    sameAs: [
+      "https://www.shopify.com/partners/directory/partner/involvepro-agency",
+      "https://www.upwork.com/agencies/1514309167629066240/",
+      "https://pk.linkedin.com/company/involvepro",
+      "https://www.facebook.com/involvepro/",
+    ],
+  };
+}
+
+export function aboutPageSchema(params: { name: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: params.name,
+    description: params.description,
+    url: `${SITE_URL}${params.path}`,
+    mainEntity: {
+      "@type": "Organization",
+      name: "Involvepro",
+      url: SITE_URL,
+    },
+  };
+}
+
 export function jsonLdProps(data: object) {
   return {
     __html: JSON.stringify(data),

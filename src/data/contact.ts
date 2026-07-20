@@ -91,7 +91,7 @@ export const contactDetails = {
   email: "support@involvepro.com",
   phone: "+1 201 979 4218",
   phoneHref: "+12019794218",
-  location: "Jhelum, Pakistan — serving USA clients",
+  location: "Jhelum, Pakistan — clients across markets",
 };
 
 export const contactProfileLinks = [
@@ -109,9 +109,9 @@ export const contactFAQs = [
       "No. Share the current website, business goal, service area, and any known requirements. We can help clarify the scope and next steps.",
   },
   {
-    question: "Do you work with USA-based businesses?",
+    question: "Do you work with international clients?",
     answer:
-      "Yes. involvepro serves USA-focused clients across Shopify, WordPress, SEO, SaaS, AI automation, and custom web development.",
+      "Yes. involvepro is a technical partner for ecommerce, SaaS, and service businesses across markets, with structured technical delivery on Shopify, WordPress, SEO, SaaS, AI automation, and custom web development.",
   },
   {
     question: "Can I schedule a meeting instead of filling out the form?",

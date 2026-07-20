@@ -51,7 +51,7 @@ export type BlogPost = {
 const involveproAuthor: BlogPostAuthor = {
   name: "involvepro Team",
   role: "Shopify, SEO, and Web Development Team",
-  bio: "Shopify, WordPress, SEO, SaaS, AI automation, UI/UX, and custom development specialists helping USA-focused businesses build cleaner, faster, and more reliable digital systems.",
+  bio: "Shopify, WordPress, SEO, SaaS, AI automation, UI/UX, and custom development specialists helping growth-focused brands build cleaner, faster, and more reliable digital systems.",
 };
 
 const involveproReviewer: BlogPostReviewer = {

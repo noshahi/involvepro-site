@@ -19,13 +19,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://involvepro.com"),
-  title: "involvepro | Technical Web Development Agency (USA)",
+  title: "involvepro | Technical Web Development Agency",
   description:
-    "Technical web development agency for USA businesses — Shopify, WordPress, SaaS, AI automation, and technical SEO under one team. Schedule a free audit.",
+    "Technical web development agency for ecommerce, SaaS, and service businesses — Shopify, WordPress, SaaS, AI automation, and technical SEO under one team. Schedule a free audit.",
   openGraph: {
     title: "involvepro — Technical Web Development Agency",
     description:
-      "Shopify, WordPress, SaaS, AI automation, and technical SEO — one technical team, 400+ projects, USA-focused clients.",
+      "Shopify, WordPress, SaaS, AI automation, and technical SEO — one technical team, 400+ projects, clients across markets.",
     type: "website",
     url: "https://involvepro.com/",
   },
@@ -41,7 +41,7 @@ const organizationJsonLd = {
   url: "https://involvepro.com/",
   logo: "https://involvepro.com/brand/logo-green.svg",
   description:
-    "Shopify Select Partner and WordPress development agency offering custom-coded ecommerce websites, SaaS products, AI automation, technical SEO, UI/UX design and ongoing support for USA-based businesses.",
+    "Shopify Select Partner and WordPress development agency offering custom-coded ecommerce websites, SaaS products, AI automation, technical SEO, UI/UX design and ongoing support for growth-focused brands across markets.",
   email: "support@involvepro.com",
   telephone: "+1-201-979-4218",
   address: {

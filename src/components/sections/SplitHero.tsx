@@ -49,7 +49,7 @@ export function SplitHero() {
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             className="mt-6 max-w-[520px] text-[17px] leading-[1.65] text-white/60"
           >
-            involvepro helps USA-focused businesses design, build, optimize, and maintain Shopify
+            involvepro helps growth-focused brands design, build, optimize, and maintain Shopify
             stores, WordPress websites, SaaS products, AI automations, SEO systems, and custom web
             platforms.
           </motion.p>
