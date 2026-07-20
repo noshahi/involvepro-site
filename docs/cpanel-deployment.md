@@ -195,3 +195,11 @@ Then collect logs before debugging further:
   a local `.env` file, which never reaches the server).
 - **Prisma errors on deploy**: run `npx prisma migrate deploy` (never
   `migrate reset` or `db push --force-reset` in production).
+- **`npm ci` skips devDependencies**: the account's alt-nodejs npmrc sets
+  `omit=dev` globally. The repo's `.npmrc` (`include=dev`) overrides this so
+  `@tailwindcss/postcss` and other build-time devDependencies install.
+- **Turbopack panics during build** (`The global thread pool has not been
+  initialized` / `Resource temporarily unavailable`): CloudLinux's LVE
+  process/thread limits kill Turbopack's native Rust thread pool. This is
+  why `build:cpanel` uses `next build --webpack` instead of the Turbopack
+  default.
